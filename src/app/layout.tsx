@@ -13,7 +13,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Fonts: Raleway */}
         <link
           href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap"
           rel="stylesheet"

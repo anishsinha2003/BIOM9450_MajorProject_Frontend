@@ -6,6 +6,11 @@
   width: 100vw;
   background-color: #1F1E2E;
 }
+.homeButton {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
 
 .middleContainerLogIn {
   width: 600px;

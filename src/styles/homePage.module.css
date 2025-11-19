@@ -1,0 +1,134 @@
+.pageContainer {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: "Raleway";
+}
+
+
+.topSection {
+  position: relative;
+  height: 66%;
+  width: 100%;
+  background-color: #1f1e2e;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 30px;
+  justify-content: center;
+}
+.topContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 250px;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  opacity: 0.3;
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.leftTopContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  justify-content: center;
+  gap: 16px;
+}
+
+.leftTopContent {
+    width: 500px;
+    position: relative;
+    right: -100px;
+}
+
+.title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.blurb {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  line-height: 1.8;
+  padding-bottom: 20px;
+  opacity: 0.6;
+  letter-spacing: 0.7px;
+}
+
+.ctaButton {
+    background-color: #3966eb;
+    border: none;
+    padding: 12px 28px;
+    color: rgba(255, 255, 255, 0.654);
+    font-family: "Raleway";
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.5s;
+}
+
+.ctaButton:hover {
+    background-color: #174cee;
+}
+
+.rightImageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightImage {
+
+  object-fit: cover;
+  border-radius: 16px;
+  opacity: 0.7;
+}
+
+
+.bottomSection {
+  height: 34%;
+  width: 100%;
+  background-color: #EAEAEA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.aboutTitle {
+  color: rgba(0, 0, 0, 0.536);
+  font-size: 2rem;
+  font-family: "Raleway";
+  letter-spacing: 0.7px;
+  font-weight: 100;
+  margin-bottom: 12px;
+}
+
+.aboutDescription {
+  max-width: 1220px;
+  color: rgba(0, 0, 0, 0.31);
+  line-height: 28px;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+  opacity: 0.3;
+}
