@@ -147,6 +147,9 @@
   border-radius: 10px;
   transition: all 0.5s;
 }
+.inputError {
+  border: 1px solid red;
+}
 
 .input:hover,
 .input:focus {

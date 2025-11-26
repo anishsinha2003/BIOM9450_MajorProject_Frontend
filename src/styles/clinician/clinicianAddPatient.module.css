@@ -1,0 +1,152 @@
+.modalContainer {
+    width: 90%;
+    padding: 35px;
+    background: #203B45;
+
+    font-family: "Raleway";
+    border-radius: 14px;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 500px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff6d;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label {
+    font-size: 14px;
+    color: #ffffff78;
+    letter-spacing: 0.8px;
+}
+
+.input {
+    padding: 10px 14px;
+    border: 1px solid #cccccc1b;
+    border-radius: 10px;
+    color: #f7f7f7b1;
+    font-size: 15px;
+    letter-spacing: 1px;
+    background-color: #cccccc1b;
+    transition: 0.5s;
+    letter-spacing: 1.2px;
+}
+
+
+.input:focus {
+    outline: none;
+    border-color: #e6e6e644;
+    background: #ffffff28;
+}
+.input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.errorInput {
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.uploadSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.uploadBox {
+    padding: 20px;
+    background: #cccccc1b;
+    border: 2px dashed #bbbbbb60;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.uploadBoxError {
+    padding: 20px;
+    background: #cccccc1b;
+    border: 2px dashed #ff0000da;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.uploadBox:hover {
+    background: #ffffff28;
+}
+
+.uploadText {
+    font-size: 14px;
+    color: #f7f7f7b1;
+    letter-spacing: 1px;
+}
+
+.fileName {
+    font-size: 14px;
+    color: #f7f7f77d;
+    font-weight: 600;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.submitBtn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 14px;
+    background: #1a787f7a;
+
+    color: #ffffff91;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.submitBtn:hover {
+    background: #1a787f;
+}
+
+.close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: white;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.close:hover {
+    opacity: 1;
+    cursor: pointer;
+}

@@ -1,0 +1,183 @@
+.container {
+    background-color: #203b45;
+    height: 600px;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    /* padding-left: 50px; */
+    /* padding-right: 50px; */
+    position: relative;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 15px;
+
+    display: grid;
+    grid-template-rows: 60px 1fr 30px;
+    overflow: scroll;
+}
+
+/* Top row */
+/* .title {
+    justify-content: start;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: "Raleway";
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.159);
+    letter-spacing: 0.7px;
+    font-weight: bold;
+    padding-left: 20px;
+} */
+
+
+.title {
+    /* padding-top: 45px; */
+    font-family: "Raleway";
+    font-size: 17px;
+    letter-spacing: 0.7px;
+    font-weight: bold;
+    font-size: 25px;
+    font-weight: 700;
+    color: #ffffff4f;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    /* padding-bottom: 25px; */
+}
+
+/* Middle row (scrolls) */
+.middleContent {
+    position: relative;
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+
+.actionButtons {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
+.addButton {
+    /* background-color: #84261fbd; */
+    background-color: #ffffff29;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Raleway";
+    border-radius: 6px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.516);
+    height: 35px;
+    letter-spacing: 1px;
+}
+
+.addButton:hover {
+    background-color: #ffffff80;
+}
+
+.close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: white;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.close:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* table */
+/* Main table container */
+.tableContainer {
+    width: 95%;
+    height: 100%;
+
+}
+.tableHeaderContainer {
+    width: 100%;
+    height: 100%;
+}
+.table {
+    width: 100%;
+    display: grid;
+    overflow: hidden;
+    /* background-color: pink; */
+    grid-auto-rows: auto;
+    font-family: "Raleway";
+    letter-spacing: 1px;
+    row-gap: 10px;
+    margin: 20px 0px;
+    /* background-color: blue; */
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+    /* background: rgba(255, 255, 255, 0.08); */
+    background: #215d61d0;
+    padding: 12px 15px;
+    border-radius: 12px;
+    color: #f0f7f9b1;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    backdrop-filter: blur(4px);
+    position: fixed;
+    width: 92.5%;
+    /* padding-left: 30px; */
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+    padding: 20px 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    font-size: 14px;
+    color: #f0f7f974;
+    transition: background 0.2s ease;
+    /* padding-left: 30px; */
+    position: relative;
+    top: -8px;
+}
+
+
+.tableRow:not(:has(.download:hover)):hover {
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
+.tableRow > div,
+.tableHeader > div {
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.download {
+    color: #4fc3f7;
+    opacity: 0.4;
+    transition: 0.3s;
+}
+.download:hover {
+    opacity: 1;
+}

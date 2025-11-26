@@ -1,0 +1,161 @@
+.container {
+    background-color: #203b45;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 15px;
+
+    display: grid;
+    grid-template-rows: 60px 1fr 30px;
+    overflow: hidden;
+}
+
+/* Top row */
+.title {
+    justify-content: start;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: "Raleway";
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.159);
+    letter-spacing: 0.7px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* Middle row (scrolls) */
+.middleContent {
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: relative;
+}
+/* .bottomContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.bottomActions {
+    overflow: scroll;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    text-align: center;
+    flex-direction: column;
+
+} */
+
+.addButton {
+    /* background-color: #84261fbd; */
+    background-color: #ffffff2f;
+    width: 100px;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Raleway";
+    border-radius: 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.516);
+    height: 35px;
+    position: absolute;
+    letter-spacing: 1px;
+    top: 20px;        /* adjust for vertical alignment */
+    right: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.addButton:hover {
+    background-color: #ffffff5e;
+}
+
+/* table */
+/* Main table container */
+.tableContainer {
+    width: 95%;
+    height: 100%;
+    overflow: scroll;
+    position: relative;
+    /* background-color: green; */
+
+}
+.table {
+    width: 100%;
+    display: grid;
+    /* overflow: scroll; */
+    /* background-color: pink; */
+    grid-auto-rows: auto;
+    row-gap: 10px;
+    margin: 0px 0px;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr 1fr 1fr 1fr;
+    /* background: rgba(255, 255, 255, 0.08); */
+    background: #215d61d0;
+    padding: 12px 15px;
+    border-radius: 12px;
+    color: #f0f7f9b1;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    backdrop-filter: blur(4px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr 1fr 1fr 1fr;
+    padding: 22px 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    font-size: 14px;
+    color: #f0f7f974;
+    transition: background 0.2s ease;
+}
+
+/* .tableRow:hover {
+    background: rgba(255, 255, 255, 0.09);
+} */
+
+.tableRow > div,
+.tableHeader > div {
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: default;
+}
+
+
+.download {
+    color: #4fc3f7;
+    opacity: 0.4;
+    transition: 0.3s;
+}
+.download:hover {
+    opacity: 1;
+}

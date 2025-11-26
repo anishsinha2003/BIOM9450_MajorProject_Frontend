@@ -1,3 +1,4 @@
+import { LoadingProvider } from "@/components/LoadingContext";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,14 +19,16 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body
-        suppressHydrationWarning
-        style={{
-          margin: 0,
-        }}
-      >
-        {children}
-      </body>
+      <LoadingProvider>
+        <body
+          suppressHydrationWarning
+          style={{
+            margin: 0,
+          }}
+        >
+          {children}
+        </body>
+      </LoadingProvider>
     </html>
   );
 }

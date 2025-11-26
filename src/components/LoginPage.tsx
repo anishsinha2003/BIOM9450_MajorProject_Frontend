@@ -1,8 +1,9 @@
 import Image from "next/image";
 import styles from "@/styles/loginPage.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import { useRouter } from "next/navigation";
+import config from "../../config";
 
 interface LoginPageProps {
   setLoggedInUser: any;
@@ -10,6 +11,37 @@ interface LoginPageProps {
 
 export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
     const router = useRouter();
+
+    // get list of users to check if signup username doesnt exist
+    const [allUsers, setAllUsers] = useState<any[]>([]);
+    useEffect(() => {
+        // Fetch users from PHP API
+        const fetchUsers = async () => {
+            try {
+                const res = await fetch(`${config.BASE_URL}/api/admin/getAllUsers.php`);
+                const data = await res.json();
+
+                if (data.success) {
+                    setAllUsers(data.data);
+                } else {
+                    console.error("Failed to fetch users:", data.message);
+                }
+            } catch (err) {
+                console.error("Error fetching users:", err);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
+    const usernameExists = (username: string) => {
+       return allUsers.some(
+            user =>
+                user.Username.toLowerCase() === username.toLowerCase() &&
+                user.Role === role
+        );
+    };
+
 
     // ROLE TAB
     const [role, setRole] = useState("researcher")
@@ -25,6 +57,13 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
     const [signupUser, setSignupUser] = useState("");
     const [signupPass, setSignupPass] = useState("");
     const [signupConfirmPass, setSignupConfirmPass] = useState("");
+    const [errors, setErrors] = useState({
+        firstName: false,
+        lastName: false,
+        username: false,
+        password: false,
+        confirmPassword: false,
+    });
 
     // LOGIN FORM STATE
     const [username, setUsername] = useState("");
@@ -37,7 +76,7 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
     const handleLogin = async () => {
 
         try {
-        const res = await fetch("http://localhost:8000/api/login.php", {
+        const res = await fetch(`${config.BASE_URL}/api/admin/login.php`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -68,8 +107,105 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
 
     // SIGNUP FUNCTION
     const handleSignup = async () => {
+        // first validate fields
+         // erorr checks
+        setErrors({ firstName: false, lastName: false, username: false, password: false, confirmPassword: false });
+        const fName = signupName.trim();
+        const lName = signupLastName.trim();
+        const usernameValue = signupUser.trim();
+        const passValue = signupPass.trim();
+        const confirmValue = signupConfirmPass.trim();
+
+        let hasError = false;
+        const newErrors = { firstName: false, lastName: false, username: false, password: false, confirmPassword: false };
+        let errorMessage = ""
+
+        // Check all fields required
+        if (!fName) {
+            newErrors.firstName = true;
+            hasError = true;
+        }
+        if (!lName) {
+            newErrors.lastName = true;
+            hasError = true;
+        }
+        if (!usernameValue) {
+            newErrors.username = true;
+            hasError = true;
+        }
+        if (!passValue) {
+            newErrors.password = true;
+            hasError = true;
+        }
+        if (!confirmValue) {
+            newErrors.confirmPassword = true;
+            hasError = true;
+        }
+        if (hasError) {
+            setErrors(newErrors);
+            errorMessage = "All fields are required"
+            alert(errorMessage);
+            return
+        }
+
+        // check username exists
+        if (usernameExists(usernameValue)) {
+            newErrors.username = true;
+            hasError = true;
+            setErrors(newErrors);
+            errorMessage = "Username already exists"
+            alert(errorMessage);
+            return;
+        }
+
+        // Check names for spaces
+        if (fName.includes(" ")) {
+            newErrors.firstName = true;
+            hasError = true;
+            setErrors(newErrors);
+            errorMessage = "First Name cannot include spaces"
+        }
+        if (lName.includes(" ")) {
+            newErrors.lastName = true;
+            hasError = true;
+            setErrors(newErrors);
+            errorMessage = "Last Name cannot include spaces"
+        }
+
+
+
+        // Password regex: at least 8 characters, one number, one special character
+        const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*?~`_+=<>/\\|])[A-Za-z0-9!@#$%^&*?~`_+=<>/\\|]{8,}$/;
+        console.log(passValue)
+        // Validate password
+        if (!passwordRegex.test(passValue)) {
+            newErrors.password = true;
+            hasError = true;
+            setErrors(newErrors);
+            errorMessage = "Password must be at least 8 characters, include a number and a special character";
+            alert(errorMessage);
+            return;
+        }
+
+        // Validate confirm password
+        if (passValue !== confirmValue) {
+            newErrors.confirmPassword = true;
+            hasError = true;
+            setErrors(newErrors);
+            errorMessage = "Passwords do not match";
+            alert(errorMessage);
+            return;
+        }
+
+        if (hasError) {
+            setErrors(newErrors);
+            alert(errorMessage);
+            return;
+        }
+
+        // validation done
         try {
-        const res = await fetch("http://localhost:8000/api/signup.php", {
+        const res = await fetch(`${config.BASE_URL}/api/admin/signup.php`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -168,6 +304,7 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
                             className={`${styles.tab} ${activeTab === index ? styles.activeTab : ""}`}
                             onClick={() => {
                                 setActiveTab(index);
+                                setErrors({ firstName: false, lastName: false, username: false, password: false, confirmPassword: false });
                                 clearFields();
                                 if (index === 0) setRole("clinician");
                                 else setRole("researcher");
@@ -217,15 +354,15 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
                                 Log in or Sign up as a {tabs[activeTab].name} or toggle the tabs above to change the role
                             </div>
                             <br/><br/><br/>
-                            <input id="signupName" value={signupName} className={styles.input} placeholder="Name" onChange={(e) => setSignupName(e.target.value)}/>
+                            <input id="signupName" value={signupName}  className={`${styles.input} ${errors.firstName ? styles.inputError : ""}`} placeholder="Name" onChange={(e) => setSignupName(e.target.value)}/>
                             <br/>
-                            <input id="signupLastname" value={signupLastName} className={styles.input} placeholder="Last Name" onChange={(e) => setSignupLastName(e.target.value)}/>
+                            <input id="signupLastname" value={signupLastName}  className={`${styles.input} ${errors.lastName ? styles.inputError : ""}`} placeholder="Last Name" onChange={(e) => setSignupLastName(e.target.value)}/>
                             <br/>
-                            <input id="signupUsername" value={signupUser} className={styles.input} placeholder="Username" onChange={(e) => setSignupUser(e.target.value)}/>
+                            <input id="signupUsername" value={signupUser}  className={`${styles.input} ${errors.username ? styles.inputError : ""}`} placeholder="Username" onChange={(e) => setSignupUser(e.target.value)}/>
                             <br/>
-                            <input type="password" id="signupPassword" value={signupPass} className={styles.input} placeholder="Password" onChange={(e) => setSignupPass(e.target.value)}/>
+                            <input type="password" id="signupPassword" value={signupPass}  className={`${styles.input} ${errors.password ? styles.inputError : ""}`} placeholder="Password" onChange={(e) => setSignupPass(e.target.value)}/>
                             <br/>
-                            <input type="password" id="signupConfirmPassword" value={signupConfirmPass} className={styles.input} placeholder="Confirm Password" onChange={(e) => setSignupConfirmPass(e.target.value)}/>
+                            <input type="password" id="signupConfirmPassword" value={signupConfirmPass}  className={`${styles.input} ${errors.confirmPassword ? styles.inputError : ""}`} placeholder="Confirm Password" onChange={(e) => setSignupConfirmPass(e.target.value)}/>
                             <br/><br/>
                             <div className={styles.buttonContainer}>
                                 <div className={styles.button} onClick={handleSignup}>Sign Up</div>
