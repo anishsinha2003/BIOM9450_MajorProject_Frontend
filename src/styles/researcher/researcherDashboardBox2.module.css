@@ -9,8 +9,6 @@
     box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 15px;
 }
 
-
-
 .title {
     position: absolute;
     top: 20px;
@@ -20,4 +18,55 @@
     color: rgba(255, 255, 255, 0.159);
     letter-spacing: 0.7px;
     font-weight: bold;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 70px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-family: "Raleway";
+    letter-spacing: 0.7px;
+    color: rgba(190, 194, 237, 0.559);
+}
+
+.input {
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    font-family: "Raleway";
+    letter-spacing: 0.7px;
+    width: 500px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #020617;
+    color: #a8b3c9;
+}
+
+.upload {
+    cursor: pointer;
+    background: #278355;
+    color: #020617;
+    width: 100px;
+    border-radius: 100px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-family: "Raleway";
+}
+
+.error {
+    color: #db6161;
+    font-family: "Raleway";
+    font-size: 14px;
+}
+
+.success {
+    color: #56c57b;
+    font-family: "Raleway";
+    font-size: 14px;
 }
