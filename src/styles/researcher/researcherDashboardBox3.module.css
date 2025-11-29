@@ -1,23 +1,46 @@
 .container {
-    background-color: #202d5d;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    padding-left: 10px;
-    padding-top: 10px;
-    border-radius: 16px;
-    box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 15px;
+  background-color: #202d5d;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 15px;
+  overflow: hidden;
 }
-
-
 
 .title {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-family: "Raleway";
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.159);
-    letter-spacing: 0.7px;
-    font-weight: bold;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: "Raleway";
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: bold;
+  letter-spacing: 0.7px;
 }
+
+.summaryTable {
+  max-height: 320px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  padding-top: 40px;
+}
+
+.headerRow,
+.tableRow {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1.6fr 1.7fr 2fr 0.7fr 1.3fr;
+  gap: 16px;
+  font-weight: 450;
+  border-bottom: 1px solid rgba(144, 159, 180, 0.617);
+}
+
+.pdfUrl {
+    color: #1f27bd;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
