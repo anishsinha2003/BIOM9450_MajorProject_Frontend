@@ -154,8 +154,10 @@
 .download {
     color: #4fc3f7;
     opacity: 0.4;
+    cursor: pointer;
     transition: 0.3s;
 }
 .download:hover {
     opacity: 1;
+    cursor: pointer;
 }

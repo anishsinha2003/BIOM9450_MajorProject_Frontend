@@ -4,12 +4,12 @@ import ClinicianLlmBox from "@/components/clinician/llmQuery/ClinicianLlmBox";
 import Image from "next/image";
 import ClinicianUploadLiteratureBox from "./literature/ClinicianLiteratureBox";
 import ClinicianPatientBox from "./patient/ClinicianPatientBox";
-import { useLoading } from "../LoadingContext";
-import Loading from "../Loading";
+import { useUser } from "@/components/UserContext";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function ClinicianPage() {
-  const { loading } = useLoading();
-  if (loading) return <Loading />;
+  const {setUser, user, logout} = useUser();
+
   return (
     // researxher
     <div className={styles.pageContainer}>
@@ -23,7 +23,8 @@ export default function ClinicianPage() {
             height={150}
             className={styles.headerImage}
           />
-          <span className={styles.headerText}>Welcome to your Dashboard, Anish!</span>
+          <span className={styles.headerText}>Welcome to your Dashboard <span style={{fontWeight: "bold", color: "#48a7b0ff"}}>{user?.name}</span>!</span>
+          <div className={styles.logout} onClick={logout}><LogoutIcon sx={{fontSize: "30px"}}/></div>
         </div>
         <>
           <div className={styles.leftSection}>

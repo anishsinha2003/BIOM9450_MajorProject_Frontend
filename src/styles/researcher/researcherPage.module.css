@@ -1,3 +1,4 @@
+
 .pageContainer {
   display: grid;
   height: 100vh;
@@ -14,9 +15,6 @@
   font-family: Raleway, sans-serif;
   box-sizing: border-box;
   padding: 15px;
-
-  overflow-y: auto;    /* allow scrolling */
-
 }
 
 .header {
@@ -47,6 +45,20 @@
   font-weight: 500;
 }
 
+.logout {
+  position: absolute;
+  right: 25px;
+  top: 54%;
+  transform: translateY(-50%);
+  color: white;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+
+.logout:hover {
+  opacity: 1;
+}
 .leftSection {
   grid-row: 2;
   grid-column: 1;
@@ -63,6 +75,7 @@
   flex-direction: column;
   justify-content: space-between;
   border-radius: 10px;
+  /* background-color: red; */
 }
 
 .rightTop,
@@ -71,6 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
   border-radius: 10px;
 }
 

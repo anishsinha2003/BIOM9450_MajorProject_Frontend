@@ -4,13 +4,12 @@ import { useEffect, useState } from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import { useRouter } from "next/navigation";
 import config from "../../config";
+import { useUser } from "@/components/UserContext";
 
-interface LoginPageProps {
-  setLoggedInUser: any;
-}
 
-export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
+export default function LoginPage() {
     const router = useRouter();
+    const { setUser, user } = useUser();
 
     // get list of users to check if signup username doesnt exist
     const [allUsers, setAllUsers] = useState<any[]>([]);
@@ -57,6 +56,7 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
     const [signupUser, setSignupUser] = useState("");
     const [signupPass, setSignupPass] = useState("");
     const [signupConfirmPass, setSignupConfirmPass] = useState("");
+
     const [errors, setErrors] = useState({
         firstName: false,
         lastName: false,
@@ -92,14 +92,16 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
             alert(data.error || "Login failed");
             return;
         }
-        setLoggedInUser({
+
+        setUser({
             name: data.user.name,
             lastName: data.user.lastName,
             email: data.user.username,
             role: data.user.role,
         });
         clearFields();
-        console.log("User logged in:", data.user);
+        if (role === "clinician") router.push("/clinician");
+        if (role === "researcher") router.push("/researcher");
         } catch (err) {
         console.error("Error logging in:", err);
         }
@@ -226,15 +228,18 @@ export default function LoginPage({ setLoggedInUser }: LoginPageProps) {
         }
 
         alert("Signup successful! Logging you in...");
-        setLoggedInUser({
+        setUser({
             name: data.user.name,
             lastName: data.user.lastName,
             email: data.user.username,
             role: data.user.role,
         });
 
+
         clearFields();
         console.log("User signed up:", data.user);
+        if (role === "clinician") router.push("/clinician");
+        if (role === "researcher") router.push("/researcher");
         } catch (err) {
         console.error("Error signing up:", err);
         }

@@ -16,19 +16,6 @@
 }
 
 /* Top row */
-/* .title {
-    justify-content: start;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    font-family: "Raleway";
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.159);
-    letter-spacing: 0.7px;
-    font-weight: bold;
-    padding-left: 20px;
-} */
 
 
 .title {
@@ -176,8 +163,10 @@
 .download {
     color: #4fc3f7;
     opacity: 0.4;
+    cursor: pointer;
     transition: 0.3s;
 }
 .download:hover {
     opacity: 1;
+    cursor: pointer;
 }

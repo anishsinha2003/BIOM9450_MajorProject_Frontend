@@ -1,5 +1,5 @@
 .container {
-    background-color: #203b45;
+    background-color: #202D5D;
     height: 100%;
     width: 100%;
     position: relative;
@@ -26,7 +26,7 @@
     padding-left: 20px;
 }
 
-/* Middle row ) */
+/* Middle row (scrolls) */
 .middleContent {
     overflow: scroll;
     height: 100%;
@@ -38,6 +38,27 @@
     flex-direction: column;
     position: relative;
 }
+/* .bottomContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.bottomActions {
+    overflow: scroll;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    text-align: center;
+    flex-direction: column;
+
+} */
 
 .addButton {
     /* background-color: #84261fbd; */
@@ -80,6 +101,7 @@
 .table {
     width: 100%;
     display: grid;
+    /* overflow: scroll; */
     /* background-color: pink; */
     grid-auto-rows: auto;
     row-gap: 10px;
@@ -90,10 +112,10 @@
     display: grid;
     grid-template-columns: 0.5fr 1fr 1fr 1fr;
     /* background: rgba(255, 255, 255, 0.08); */
-    background: #215d61d0;
+    background: #304EB8;
     padding: 12px 15px;
     border-radius: 12px;
-    color: #f0f7f9b1;
+    color: #f0f7f987;
     font-weight: bold;
     font-size: 14px;
     letter-spacing: 0.4px;

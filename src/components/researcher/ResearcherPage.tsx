@@ -1,10 +1,16 @@
-import ResearcherDashboardBox1 from "@/components/researcher/ResearcherDashboardBox1";
+import ResearcherLiteratureSummary from "@/components/researcher/llmQuery/ResearcherLiteratureSummaryBox";
 import styles from "@/styles/researcher/researcherPage.module.css";
 import ResearcherDashboardBox2 from "@/components/researcher/ResearcherDashboardBox2";
-import ResearcherDashboardBox3 from "@/components/researcher/ResearcherDashboardBox3";
+import ResearcherLiteratureBox from "@/components/researcher/literature/ResearcherLiteratureBox";
 import Image from "next/image";
+import { useUser } from "@/components/UserContext";
+import LogoutIcon from '@mui/icons-material/Logout';
+
+
 
 export default function ResearcherPage() {
+  const {setUser, user, logout} = useUser();
+
   return (
     // researxher
     <div className={styles.pageContainer}>
@@ -18,10 +24,11 @@ export default function ResearcherPage() {
             height={150}
             className={styles.headerImage}
           />
-          <span className={styles.headerText}>Welcome to your Dashboard, Anish!</span>
+          <span className={styles.headerText}>Welcome to your Dashboard <span style={{fontWeight: "bold", color: "#8097eeff"}}>{user?.name}!</span></span>
+          <div className={styles.logout} onClick={logout}><LogoutIcon sx={{fontSize: "30px"}}/></div>
         </div>
         <div className={styles.leftSection}>
-          <ResearcherDashboardBox1/>
+          <ResearcherLiteratureSummary/>
         </div>
 
         <div className={styles.rightContainer}>
@@ -29,7 +36,7 @@ export default function ResearcherPage() {
             <ResearcherDashboardBox2/>
           </div>
           <div className={styles.rightBottom}>
-            <ResearcherDashboardBox3/>
+            <ResearcherLiteratureBox/>
           </div>
         </div>
       </div>

@@ -1,0 +1,98 @@
+
+.container {
+    background-color: #202D5D;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 15px;
+
+    display: grid;
+    grid-template-rows: 60px auto 100px;
+    overflow: hidden;
+}
+
+/* Top row */
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    font-family: "Raleway";
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.159);
+    letter-spacing: 0.7px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* Middle row (scrolls) */
+.middleContent {
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+/* Bottom row */
+.tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* middle content title */
+.midContentTitle {
+    font-family: "Raleway";
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: white;
+    opacity: 0.08;
+    width: 500px;
+    line-height: 35px;
+}
+
+.midContentPdf{
+    width: 90%;
+    height: 90%;
+    opacity: 0.8;
+
+}
+/* file ipload and prompt text */
+.fileUploadTagContainer {
+    width: 300px;
+    height: 50px;
+    background-color: #3551b84b;
+    border-radius: 100px;
+    display: flex;
+    opacity: 0.7;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 5px;
+
+}
+
+.fileName {
+    display: flex;
+    align-items: center;
+    font-family: "Raleway";
+    color: white;
+    opacity: 0.8;
+    letter-spacing: 1.2px;
+}
+
+.fileTickIcon {
+    cursor: pointer;
+    color: white;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+

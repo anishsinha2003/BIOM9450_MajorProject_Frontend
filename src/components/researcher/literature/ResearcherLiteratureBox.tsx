@@ -1,11 +1,11 @@
 "use client";
-import styles from "@/styles/clinician/clinicianLiteratureBox.module.css"
+import styles from "@/styles/researcher/researcherLiteratureBox.module.css"
 import { useEffect, useRef, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import config from "../../../../config";
 
 
-export default function ClinicianLiteratureBox() {
+export default function ResearcherLiteratureBox() {
   const [loading, setLoading] = useState(false)
 
   // a flag for useffect to update the table after adding something new

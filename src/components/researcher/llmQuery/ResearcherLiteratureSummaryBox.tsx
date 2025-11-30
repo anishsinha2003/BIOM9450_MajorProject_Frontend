@@ -1,6 +1,5 @@
 "use client";
-import styles from "@/styles/clinician/clinicianLlmBox.module.css"
-import ClinicianTabs from "@/components/clinician/llmQuery/ClinicianTabs"
+import styles from "@/styles/researcher/researcherLiteratureSummaryBox.module.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -8,11 +7,11 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import { CircularProgress } from "@mui/material";
+import ResearcherTabs from "./ResearcherTabs";
 
-// type StatusType = "upload" | "prompt" | "submission" | "reportAction" | "literature";
 type StatusType = "upload" | "prompt" | "submission" | "reportAction";
 
-export default function ClinicianLlmBox() {
+export default function ResearcherLiteratureSummaryBox() {
   const [generatedReport, setGeneratedReport] = useState<any>();
 
   const truncate = (str: string, max = 20) =>
@@ -22,9 +21,8 @@ export default function ClinicianLlmBox() {
   const [actionStatus, setActionStatus] = useState<StatusType>("upload");
 
   // file upload
-  // const [file, setFile] = useState<any | null>(null);
   const [prompt, setPrompt] = useState("");
-  const [ehrIdSelected, setEhrIdSelected] = useState<any | null>(null);
+  const [literatureIdSelected, setLiteratureIdSelected] = useState<any | null>(null);
 
 
   // loading
@@ -32,7 +30,7 @@ export default function ClinicianLlmBox() {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        EHR Query Document Generation
+        Literature Query Generation
       </div>
       {loading
       ?  <div className={styles.middleContent}> <CircularProgress sx={{color: "#fafafa92"}}/></div>
@@ -41,19 +39,19 @@ export default function ClinicianLlmBox() {
           <div className={styles.middleContent}>
             {actionStatus === "upload" ? (
               <div className={styles.midContentTitle}>
-                Please upload a EHR file!
+                Please upload a literature file!
               </div>
             ) : actionStatus === "prompt" ? (
-              ehrIdSelected ? (
+              literatureIdSelected ? (
                 <>
                   <div className={styles.fileUploadTagContainer}>
                     <div className={styles.fileUploadTagContainer}>
                       <div className={styles.fileName}>
-                        <DescriptionIcon/>&nbsp;&nbsp;<span>Patient EHR Selected</span>
+                        <DescriptionIcon/>&nbsp;&nbsp;<span>Literature Selected</span>
                       </div>
                       <div className={styles.fileAction}>
                         <CheckCircleIcon
-                          style={{ color: '#2c9966', fontSize: 35,  position: "relative", bottom: "-2px" }}
+                          style={{ color: '#5c7ef5ff', fontSize: 35,  position: "relative", bottom: "-2px" }}
                         />
                       </div>
                     </div>
@@ -72,11 +70,11 @@ export default function ClinicianLlmBox() {
                     <div className={styles.fileUploadTagContainer}>
                       <div className={styles.fileUploadTagContainer}>
                         <div className={styles.fileName}>
-                          <DescriptionIcon/>&nbsp;&nbsp;<span>Patient EHR Selected</span>
+                          <DescriptionIcon/>&nbsp;&nbsp;<span>Literature Selected</span>
                         </div>
                         <div className={styles.fileAction}>
                           <CheckCircleIcon
-                            style={{ color: '#2c9966', fontSize: 35,  position: "relative", bottom: "-2px" }}
+                            style={{ color: '#5c7ef5ff', fontSize: 35,  position: "relative", bottom: "-2px" }}
                           />
                         </div>
                       </div>
@@ -89,7 +87,7 @@ export default function ClinicianLlmBox() {
                         </div>
                         <div className={styles.fileAction}>
                           <CheckCircleIcon
-                            style={{ color: '#2c9966', fontSize: 35,  position: "relative", bottom: "-2px" }}
+                            style={{ color: '#5c7ef5ff', fontSize: 35,  position: "relative", bottom: "-2px" }}
                           />
                         </div>
                       </div>
@@ -115,7 +113,7 @@ export default function ClinicianLlmBox() {
 
           </div>
           <div className={styles.tabs}>
-            <ClinicianTabs actionStatus={actionStatus} setActionStatus={setActionStatus} setPrompt={setPrompt} prompt={prompt} setEhrIdSelected={setEhrIdSelected} ehrIdSelected={ehrIdSelected} setGeneratedReport={setGeneratedReport} generatedReport={generatedReport} setLoading={setLoading}/>
+            <ResearcherTabs actionStatus={actionStatus} setActionStatus={setActionStatus} setPrompt={setPrompt} prompt={prompt} setLiteratureIdSelected={setLiteratureIdSelected} literatureIdSelected={literatureIdSelected} setGeneratedReport={setGeneratedReport} generatedReport={generatedReport} setLoading={setLoading}/>
           </div>
         </>
       }

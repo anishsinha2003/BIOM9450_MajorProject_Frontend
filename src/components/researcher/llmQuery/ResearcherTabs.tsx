@@ -1,32 +1,38 @@
 "use client";
-import styles from "@/styles/clinician/clinicianTabs.module.css";
+import styles from "@/styles/researcher/researcherTabs.module.css";
 import { useEffect, useRef, useState } from "react";
 import { Modal, Box } from "@mui/material";
-import AttachEhrModal from "./AttachPatientRecordModal";
 import config from "../../../../config";
+import AttachLiteratureModal from "./AttachLiteratureModal";
 
-export default function ClinicianTabs({ actionStatus, setActionStatus, setPrompt, prompt, setEhrIdSelected, ehrIdSelected, setGeneratedReport, generatedReport, setLoading}: {actionStatus: any, setActionStatus: any, setPrompt: any, prompt: string, setEhrIdSelected: any, ehrIdSelected: any, setGeneratedReport: any, generatedReport: any, setLoading: any}) {
+export default function ResearcherTabs({ actionStatus, setActionStatus, setPrompt, prompt, setLiteratureIdSelected, literatureIdSelected, setGeneratedReport, generatedReport, setLoading}: {actionStatus: any, setActionStatus: any, setPrompt: any, prompt: string, setLiteratureIdSelected: any, literatureIdSelected: any, setGeneratedReport: any, generatedReport: any, setLoading: any}) {
 
+    console.log(literatureIdSelected)
 
     const handleCancelUpload = () => {
-        setEhrIdSelected(null);
+        setLiteratureIdSelected(null);
         setActionStatus("upload");
         setPrompt(null)
     };
+    console.log(prompt)
+    console.log(literatureIdSelected)
+
 
     const handleSubmit = async () => {
-        if (!ehrIdSelected) {
+        if (!literatureIdSelected) {
             alert("Please upload a PDF");
             return;
         }
+
+
         const payload = {
-            prompt: prompt,
-            ehrId: ehrIdSelected
+            prompt: prompt == "Resource Links" ? "Provide resourses similar to this literature (links, books and more)" : prompt,
+            docId: literatureIdSelected
         };
         let success = false;
         try {
             setLoading(true)
-            const res = await fetch(`${config.BASE_URL}/api/llmQueries/llmCall.php`, {
+            const res = await fetch(`${config.BASE_URL}/api/llmQueries/llmQueryLiterature.php`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -59,7 +65,7 @@ export default function ClinicianTabs({ actionStatus, setActionStatus, setPrompt
         }, 200);
 
     };
-    console.log(generatedReport)
+
     function showReportPreview() {
 
     }
@@ -74,19 +80,16 @@ export default function ClinicianTabs({ actionStatus, setActionStatus, setPrompt
             >
                 <div className={styles.container}>
                     <div className={styles.text1}>
-                        Likely Diagnosis?
+                        Summarise
                     </div>
                     <div className={styles.text1}>
-                        Treatment Options?
-                    </div>
-                    <div className={styles.text1}>
-                        Lifestyle Advice?
+                        Resource Links
                     </div>
                     <div className={styles.highlightedTabsSingle} onClick={() => setOpen(true)}>
                        <label
                             className={styles.text2}
                         >
-                            Upload EHR
+                            Upload Literature
                         </label>
                     </div>
                 </div>
@@ -101,28 +104,19 @@ export default function ClinicianTabs({ actionStatus, setActionStatus, setPrompt
                             className={styles.text1select}
                             onClick={() => {
                                 setActionStatus("submission");
-                                setPrompt("Likely Diagnosis");
+                                setPrompt("Summarise");
                             }}
                         >
-                            Likely Diagnosis?
+                            Summarise
                         </div>
                         <div
                             className={styles.text1select}
                             onClick={() => {
                                 setActionStatus("submission");
-                                setPrompt("Treament Options");
+                                setPrompt("Resource Links");
                             }}
                         >
-                            Treatment Options?
-                        </div>
-                        <div
-                            className={styles.text1select}
-                            onClick={() => {
-                                setActionStatus("submission");
-                                setPrompt("Lifestyle Advice");
-                            }}
-                        >
-                            Lifestyle Advice?
+                            Resource Links
                         </div>
                     </div>
 
@@ -210,7 +204,7 @@ export default function ClinicianTabs({ actionStatus, setActionStatus, setPrompt
 
                 }}
                 >
-                    <AttachEhrModal setOpen={setOpen} setActionStatus={setActionStatus} setEhrIdSelected={setEhrIdSelected}/>
+                    <AttachLiteratureModal setOpen={setOpen} setActionStatus={setActionStatus} setLiteratureIdSelected={setLiteratureIdSelected}/>
                 </Box>
             </Modal>
         </div>

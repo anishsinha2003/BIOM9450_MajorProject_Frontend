@@ -171,7 +171,6 @@ export default function ClinicianAddPatientModal({setOpen, setUpdateTableFlag, u
                                 />
                             </div>
 
-                            {/* Last Name */}
                             <div className={styles.inputGroup}>
                                 <label className={styles.label}>Last Name</label>
                                 <input
@@ -182,7 +181,6 @@ export default function ClinicianAddPatientModal({setOpen, setUpdateTableFlag, u
                                 />
                             </div>
 
-                            {/* DOB */}
                             <div className={styles.inputGroup}>
                                 <label className={styles.label}>Date of Birth</label>
                                 <input
@@ -193,7 +191,6 @@ export default function ClinicianAddPatientModal({setOpen, setUpdateTableFlag, u
                                 />
                             </div>
 
-                            {/* Sex */}
                             <div className={styles.inputGroup}>
                                 <label className={styles.label}>Sex</label>
                                 <select
@@ -209,7 +206,6 @@ export default function ClinicianAddPatientModal({setOpen, setUpdateTableFlag, u
                             </div>
                         </div>
 
-                        {/* File Upload */}
                         <div className={styles.uploadSection}>
                             <label className={styles.label}>Upload File</label>
 
