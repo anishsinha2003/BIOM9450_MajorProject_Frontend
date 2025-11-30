@@ -7,8 +7,6 @@ import AttachLiteratureModal from "./AttachLiteratureModal";
 
 export default function ResearcherTabs({ actionStatus, setActionStatus, setPrompt, prompt, setLiteratureIdSelected, literatureIdSelected, setGeneratedReport, generatedReport, setLoading}: {actionStatus: any, setActionStatus: any, setPrompt: any, prompt: string, setLiteratureIdSelected: any, literatureIdSelected: any, setGeneratedReport: any, generatedReport: any, setLoading: any}) {
 
-    console.log(literatureIdSelected)
-
     const handleCancelUpload = () => {
         setLiteratureIdSelected(null);
         setActionStatus("upload");

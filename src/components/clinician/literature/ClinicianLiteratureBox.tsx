@@ -76,7 +76,6 @@ export default function ClinicianLiteratureBox() {
     }, 1000);
 
   };
-  console.log(literatureList)
   return (
     <div className={styles.container}>
       <div className={styles.title}>

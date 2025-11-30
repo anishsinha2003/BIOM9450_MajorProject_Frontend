@@ -178,7 +178,6 @@ export default function LoginPage() {
 
         // Password regex: at least 8 characters, one number, one special character
         const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*?~`_+=<>/\\|])[A-Za-z0-9!@#$%^&*?~`_+=<>/\\|]{8,}$/;
-        console.log(passValue)
         // Validate password
         if (!passwordRegex.test(passValue)) {
             newErrors.password = true;
@@ -237,7 +236,6 @@ export default function LoginPage() {
 
 
         clearFields();
-        console.log("User signed up:", data.user);
         if (role === "clinician") router.push("/clinician");
         if (role === "researcher") router.push("/researcher");
         } catch (err) {
@@ -257,7 +255,6 @@ export default function LoginPage() {
     }
 
     function clearFields() {
-        console.log("ADXIn")
         setSignupName("");
         setSignupLastName("");
         setSignupUser("");
